@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{{title}} - Sensors</title>
+        <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content="Cody Lewis" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel='stylesheet' href='/static/stylesheets/style.css' />
+    </head>
+    <body>
+        <div class="root">
+            <a href="/" style="float:left">
+                <span style="font-size: 96px; color: black; padding: 15px;">
+                    <i class="fas fa-chevron-left"></i>
+                </span>
+            </a>
+            <h1>Sensor {{title}}</h1>
+            <h2>{{data['type']}}</h2>
+                <table class="tbl">
+                    <tr>
+                        <th>Time</th>
+                        {% if data['type'] == "Themometer" %}
+                            <th>Temperature (°C)</th>
+                        {% elif data['type'] == "Acnemometer" %}
+                            <th>Speed (m/s)</th>
+                            <th>Pressure (HpA)</th>
+                        {% elif data['type'] == "Smart Light" %}
+                            <th>Status</th>
+                            <th>Usage (kW/h)</th>
+                        {% elif data['type'] == "Pulse Oximeter" %}
+                            <th>Pulse Rate (bpm)</th>
+                        {% endif %}
+                    </tr>
+                    {% for row in data['data'] %}
+                        <tr>
+                            <td>{{ row['time'] }}</td>
+                            {% if data['type'] == "Themometer" %}
+                                <td>{{ row['temp']  }}</td>
+                            {% elif data['type'] == "Acnemometer" %}
+                                <td>{{ row['speed']  }}</td>
+                                <td>{{ row['pressure'] }}</td>
+                            {% elif data['type'] == "Smart Light" %}
+                                <td>{{ row['status'] }}</td>
+                                <td>{{ row['usage'] }}</td>
+                            {% elif data['type'] == "Pulse Oximeter" %}
+                                <td>{{ row['rate'] }}</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            <br />
+        </div>
+    </body>
+</html>
