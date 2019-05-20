@@ -9,7 +9,7 @@ A simulation of an Internet of things network using a centralized document store
 ## Setup
 Run
 ```
-cd www && npm install && cd ..
+pip3 install -r requirements.txt
 ```
 
 ## Running
