@@ -4,7 +4,7 @@ A simulation of an Internet of things network using a centralized document store
 ## Requirements
 - CouchDB
 - python
-- NodeJS
+- flask
 
 ## Setup
 Run
@@ -19,6 +19,6 @@ cd src && python3 Network.py
 ```
 then start the web server with
 ```
-cd ../www && npm start
+cd ../www && export FLASK_APP=Server.py && flask run
 ```
-and visit http://localhost:3000/
+and visit http://localhost:5000/
